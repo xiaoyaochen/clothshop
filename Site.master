@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" language="javascript">
+        function startTimer() {
+            var today = new Date();
+            document.getElementById("divTimer").innerHTML = today;
+            playing();
+            setTimeout("startTimer()", 1000);
+        }
+        function imgrray(len) {
+            this.length = len;
+        }
+        imgname = new imgrray(5);
+        imgname[0] = "pictures/绣1.jpg";
+        imgname[1] = "pictures/绣2.jpg";
+        imgname[2] = "pictures/绣3.jpg";
+        imgname[3] = "pictures/绣4.jpg";
+        var i = -1;
+        function playing() {
+            if (i == 3) {
+                i = 0;
+            }
+            else
+            { i++; }
+            xiuxiu.src = imgname[i];
+            mytimeout = setTimeout("playing()", 5000);
+        }
+    </script>
+
+
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        .style1
+        {
+            width: 99%;
+            height: 37px;
+        }
+        .style2
+        {
+            width: 609px;
+        }
+        .style3
+        {
+            width: 442px;
+        }
+        .style4
+        {
+            width: 195px;
+        }
+        .style5
+        {
+            width: 100%;
+            height: 0px;
+            margin-bottom: 0px;
+        }
+        .style6
+        {
+            width: 160px;
+            background-color: #FF3300;
+        }
+        .style7
+        {
+            font-family: "Times New Roman", Times, serif;
+            font-size: x-large;
+            font-style: italic;
+            color: #FF0000;
+        }
+        #divTimer
+        {
+            margin-left: 499px;
+            color: #FFFFFF;
+        }
+        .style8
+        {
+            width: 158px;
+        }
+        .style9
+        {
+            width: 160px;
+            background-color: #FFFF99;
+            height: 40px;
+        }
+        .style10
+        {
+            height: 40px;
+        }
+        </style>
+
+</head>
+<body  onload="startTimer()" bgcolor="#ffff99">
+    <form runat="server">
+   
+    <div class="page">
+        <div class="header">
+            <div class="loginDisplay">
+                <table class="style1">
+                    <tr>
+                        <td class="style3">
+                            <asp:Image 
+                        ID="xiuxiu" runat="server" Width="543px" Height="33px" 
+                                style="margin-left: 0px; margin-bottom: 11px;" />
+                        </td>
+                        <td>
+                            <asp:Label ID="Label1" runat="server"></asp:Label>
+                            <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="登录" />
+                <asp:HyperLink 
+                            ID="HyperLink2" runat="server" NavigateUrl="~/newUser.aspx">注册</asp:HyperLink>
+                        </td>
+                        <td class="style4">
+                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/shoppingCart.aspx">我的购物车</asp:HyperLink>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/myOrder.aspx">我的订单</asp:HyperLink>
+&nbsp;
+                        </td>
+                    </tr>
+                </table>
+            <div class="title">
+                <h1 class="style7">
+                    蒂花之绣</h1>
+            </div>
+            </div>
+            <div class="clear hideSkiplink">
+                <table class="style1">
+                    <tr>
+                        <td class="style2">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="主页"/>
+                        <asp:MenuItem NavigateUrl="~/mokuai/girlHouse.aspx" Text="女神小屋" Value="女神小屋"/>
+                        <asp:MenuItem Text="男神馆" Value="男神馆" NavigateUrl="~/mokuai/boyHouse.aspx">
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/mokuai/chaoliuCloths.aspx" Text="潮流服饰" 
+                            Value="潮流服饰"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/mokuai/xiezi.aspx" Text="鞋类新品" Value="新建项">
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/mokuai/shipin.aspx" Text="服装饰品" Value="新建项">
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;&nbsp;
+                            <asp:Button ID="Button1" runat="server" Text="查找" onclick="Button1_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <table class="style5">
+                <tr>
+                    <td class="style8">
+            <asp:Label ID="Label2" runat="server" BackColor="#3399FF" BorderColor="White" 
+                Text="在线人数：0"></asp:Label>
+                    </td>
+                    <td>
+            <div id = "divTimer" ></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="main">
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            <table class="style5">
+                <tr>
+                    <td class="style6">
+            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1">
+            </asp:Menu>
+                    </td>
+                    <td style="background-color: #FFFFCC">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style9" bgcolor="#FFCC00">
+                        </td>
+                    <td class="style10">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <p>
+                    &nbsp; &nbsp;</p>
+            
+            </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+            </tr>
+        </div>
+        <div  class="clear">
+            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/About.aspx">关于本站</asp:HyperLink> 
+        </div>
+       
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~/Default.aspx" title="商品分类"  description="首页">
+        <siteMapNode url="~/newC.aspx" title="新品"  description="" />
+        <siteMapNode url="~/taozhuang.aspx" title="套装"  description="" />
+      <siteMapNode url="~/shangyi.aspx" title="上衣"  description="" />
+      <siteMapNode url="~/kuzi.aspx" title="裤子"  description="" />
+      <siteMapNode url="~/nvqun.aspx" title="裙装"  description="" />
+      <siteMapNode url="~/mokuai/shipin.aspx" title="饰品"  description="" />
+    </siteMapNode>
+</siteMap>
